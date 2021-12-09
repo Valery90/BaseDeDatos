@@ -19,7 +19,7 @@ ciudad VARCHAR(20) NOT NULL
 create table Partidos(
 id_equipo_casa int primary key, 
 constraint fk_id_equipo_casa_Partidos foreign key (id_equipo_casa) references equipos (id_equipo),
-id_equipo_fuera int,
+id_equipo_fuera int not null,
 constraint fk_id_equipo_fuera_Partidos foreign key(id_equipo_fuera) references equipos(id_equipo),
 fecha date not null,
 goles_casa int default 0 not null constraint ck_goles_casa check (goles_casa >=0),
@@ -33,7 +33,7 @@ id_equipo_fuera int,
 constraint fk_Goles primary key (id_equipo_casa, id_equipo_fuera),
 minuto int constraint ck_minuto check (minuto >=0 and minuto <=130),
 descripcion varchar(50) not null,
-id_jugador int, constraint fk_id_jugador foreign key (id_jugador) references jugadores(id_jugador)
+id_jugador int not null, constraint fk_id_jugador foreign key (id_jugador) references jugadores(id_jugador)
 );
 
 desc equipos;
